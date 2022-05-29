@@ -9,17 +9,6 @@ import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
-import javax.swing.table.TableCellRenderer;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  *
@@ -231,6 +220,11 @@ public class Burger extends javax.swing.JFrame {
 
         buttonGroupBebida.add(btnCerveza);
         btnCerveza.setText("Cerveza");
+        btnCerveza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCervezaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelMenuLayout = new javax.swing.GroupLayout(panelMenu);
         panelMenu.setLayout(panelMenuLayout);
@@ -1047,6 +1041,18 @@ public class Burger extends javax.swing.JFrame {
             campoEfectivo.requestFocus();
         }
     }//GEN-LAST:event_ComboBoxPagoActionPerformed
+
+    private void btnCervezaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCervezaActionPerformed
+        // TODO add your handling code here:
+        int i = JOptionPane.showConfirmDialog(this, "¿Eres mayor de edad?");
+        if( i == 0){
+            JOptionPane.showMessageDialog(this, "Gracias por confirmar que eres mayor de edad");
+        } else if (i == 1){
+            JOptionPane.showMessageDialog(this, "Debes de elegir otra opción");
+            btnCerveza.setEnabled(false);
+        }
+        
+    }//GEN-LAST:event_btnCervezaActionPerformed
 
     /**
      * @param args the command line arguments/
