@@ -805,15 +805,14 @@ public class Burger extends javax.swing.JFrame {
             LabelTotalMenu.setText(formatopTotalDescuento);
             String formatopCambioDescuento = String.format("%.2f$",pEfectivo - pTotalDescuento );
             LabelCambioMenu.setText(formatopCambioDescuento);
-        }
-        
-        
-        }
-        else if (pEfectivo < pTotal){
+        }else if(!CheckBoxRecogerPedido.isSelected()){
+            LabelDesuentoMenu.setText("");
+        }  else if (pEfectivo < pTotal){
             //this -> para que se quede centrado el aviso dentro de la interfaz, otra opción null
               JOptionPane.showMessageDialog(this, "El importe introducido es insuficiente", "Burger", JOptionPane.OK_OPTION);
         }
-        
+        }
+      
         }else if ("Debit Card".equals(metodoDePago)){//Si elegimos al opcion de Debit Card
         //Obtenemos el coste de todas las salsas
         costeUnitarioSalsas = costeSalsas[0] + costeSalsas[1] + costeSalsas[2] + costeSalsas[3];
@@ -841,9 +840,16 @@ public class Burger extends javax.swing.JFrame {
             LabelDesuentoMenu.setText(formatopDescuento);
             String formatopTotalDescuento = String.format("%.2f$", pTotalDescuento);
             LabelTotalMenu.setText(formatopTotalDescuento);
+            LabelCambioMenu.setText("");
+        }else if(!CheckBoxRecogerPedido.isSelected()){
+            LabelDesuentoMenu.setText("");
         }
-        }
+        }/*else if("debit Card".equals(metodoDePago)){
+            LabelCambioMenu.setText("0");
+            campoEfectivo.setText("0");
         
+        }
+        */
         
 
     }//GEN-LAST:event_btnTotalActionPerformed
@@ -1044,6 +1050,7 @@ public class Burger extends javax.swing.JFrame {
 
     private void btnCervezaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCervezaActionPerformed
         // TODO add your handling code here:
+    
         int i = JOptionPane.showConfirmDialog(this, "¿Eres mayor de edad?");
         if( i == 0){
             JOptionPane.showMessageDialog(this, "Gracias por confirmar que eres mayor de edad");
